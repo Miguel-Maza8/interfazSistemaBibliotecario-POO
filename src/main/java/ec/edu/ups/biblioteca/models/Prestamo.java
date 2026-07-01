@@ -4,16 +4,10 @@
  */
 package ec.edu.ups.biblioteca.models;
 
-import java.util.Date;
-
 /**
  *
  * @author Miguel Maza
  */
-public class Autor {
-    private String cedula ;
-    private String nombre;
-    private String apellido;
-    private Date fechaDeNacimineto;
+public class Prestamo {
     
 }

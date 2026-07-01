@@ -5,6 +5,7 @@
 package ec.edu.ups.biblioteca.dao;
 
 import ec.edu.ups.biblioteca.models.Libro;
+import java.util.List;
 
 /**
  *
@@ -15,4 +16,5 @@ public interface LibroDAO {
     Libro buscar(int codigo);
     void actualizar( Libro libro);
     Libro Eliminar(int codigo);
+    List<Libro> listar();
 }

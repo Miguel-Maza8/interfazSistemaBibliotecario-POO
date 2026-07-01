@@ -10,10 +10,10 @@ import java.util.Date;
  *
  * @author Miguel Maza
  */
-public class Autor {
+public class Usuario {
     private String cedula ;
     private String nombre;
     private String apellido;
     private Date fechaDeNacimineto;
-    
+    private String correoElectronico;
 }

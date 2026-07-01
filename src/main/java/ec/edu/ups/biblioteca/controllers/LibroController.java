@@ -5,6 +5,7 @@
 package ec.edu.ups.biblioteca.controllers;
 
 //import ec.edu.ups.biblioteca.views.MenuPrincipalView1;
+import ec.edu.ups.biblioteca.dao.LibroDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +14,8 @@ import java.awt.event.ActionListener;
  * @author Miguel Maza
  */
 public class LibroController {
+    private LibroDAO libroDAO ;
+   // private RegistrarLibroView registrarLibroView;
     
     
     

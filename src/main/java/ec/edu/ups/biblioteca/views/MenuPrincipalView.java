@@ -11,7 +11,9 @@ package ec.edu.ups.biblioteca.views;
 public class MenuPrincipalView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuPrincipalView.class.getName());
-
+    private LibroView LibroView;
+    private UsuarioView usuarioView;
+    private AutorView autorView;
     /**
      * Creates new form MenuPrincipalView
      */
@@ -306,7 +308,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroActionPerformed
-        // TODO add your handling code here:
+        LibroView libroView = new LibroView();
+         libroView.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_btnLibroActionPerformed
 
     private void btnPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamoActionPerformed
@@ -314,10 +317,15 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrestamoActionPerformed
 
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
+        UsuarioView usuarioView = new UsuarioView();
+        usuarioView.setVisible(true);
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUsuarioActionPerformed
 
     private void btnAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutoresActionPerformed
+      AutorView autorView = new AutorView();
+        autorView.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAutoresActionPerformed
 
@@ -326,6 +334,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInventarioActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
