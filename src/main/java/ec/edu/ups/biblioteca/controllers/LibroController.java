@@ -57,19 +57,28 @@ public class LibroController {
         String editorial = registrarLibroView.getTxtEditorial().getText();
         Autor autor =  (Autor) registrarLibroView.getCbAutor().getSelectedItem();
         String genero = registrarLibroView.getCbGeneros().getSelectedItem().toString();
-        
-        //String textoFecha = registrarLibroView.getTxtFechaDePublicacion().getText();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
 
-        //SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+         Date fechaPrestamo = formato.parse(registrarLibroView.getTxtFechaDePublicacion().getText());
 
-        //Date fecha = sdf.parse(textoFecha);
-        Date fecha = new Date();
-
-        Libro libro = new Libro(codigo,titulo,genero ,editorial,autor,fecha);
-        libroDAO.crear(libro);
+         Libro libro = new Libro(codigo,titulo,genero ,editorial,autor,fechaPrestamo);                                 
+         
+         libroDAO.crear(libro);
+         
+          
+         JOptionPane.showMessageDialog(null, "Libro registrado");
+         
+       } catch (ParseException e) {
+          JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto ingrese: dd/MM/yyyy");
+       }
+    }    
         
         
-    }
+
+        
+        
+   
     public void cargarAutores() {
 
         registrarLibroView.getCbAutor().removeAllItems();
@@ -82,7 +91,7 @@ public class LibroController {
             registrarLibroView.getBtnAceptar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hola");
+                
                 registrarLibro();
             }
         });
@@ -100,24 +109,19 @@ public class LibroController {
             buscarLibroView.getBtnBuscarL().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hola");
+               
                 buscarLibro();
             }
         });
         }
     public void eliminarLibro(){
          int codigo = Integer.parseInt(eliminarLibroView.getTxtCodigoEL().getText());
-        // Libro p = libroDAO.buscar(codigo);
-        
-        //if (p != null){
-            
-           // eliminarLibroView.mostrarLibro(p);
             
             int respuesta = JOptionPane.showConfirmDialog( null,"¿Deseas eliminar?\n" ,"Confirmar eliminación", JOptionPane.YES_NO_OPTION);
             
             if (respuesta == JOptionPane.YES_OPTION){
                  libroDAO.Eliminar(codigo);
-                 JOptionPane.showMessageDialog(null, "Producto eliminado");
+                 JOptionPane.showMessageDialog(null, "Libro eliminado");
                  
             }
         else{
@@ -138,7 +142,7 @@ public class LibroController {
             eliminarLibroView.getBtnBuscarL().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hola");
+                
                 buscarLibroEliminar();
             }
         });
@@ -147,7 +151,7 @@ public class LibroController {
             eliminarLibroView.getBtnEliminarL().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hola");
+                
                 eliminarLibro();
             }
         });
@@ -175,18 +179,26 @@ public class LibroController {
         String editorial = actualizarLibroView.getTxtEditorialA().getText();
         Autor autor =  (Autor) actualizarLibroView.getCbAutorA().getSelectedItem();
         String genero = actualizarLibroView.getCbGenerosA().getSelectedItem().toString();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+
+         Date fechaPrestamo = formato.parse(actualizarLibroView.getTxtFechaAc().getText());
+
+         Libro libro = new Libro(codigo,titulo,genero ,editorial,autor,fechaPrestamo);                                 
+         
+         libroDAO.crear(libro);
+         
+          
+         JOptionPane.showMessageDialog(null, "Libro actualizado");
+         
+       } catch (ParseException e) {
+          JOptionPane.showMessageDialog(null, "Formato de fecha incorrecto ingrese: dd/MM/yyyy");
+       }
         
-        //String textoFecha = registrarLibroView.getTxtFechaDePublicacion().getText();
 
-        //SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-
-        //Date fecha = sdf.parse(textoFecha);
-        Date fecha2 = new Date();
-
-        Libro libro = new Libro(codigo,titulo,genero ,editorial,autor,fecha2);
-        libroDAO.actualizar(libro);
         
-        JOptionPane.showMessageDialog(null, "Producto actualizado correctamente ");
+        
+        
       
     }
         public void cargarAutoresActualizar() {

@@ -5,6 +5,8 @@
 package ec.edu.ups.biblioteca.views;
 
 import ec.edu.ups.biblioteca.models.Autor;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -85,7 +87,30 @@ public class RegistrarLibroView extends javax.swing.JInternalFrame {
     public void setCbAutor(JComboBox<String> cbAutor) {
         this.cbAutor = cbAutor;
     }
+    public void cambiarIdioma(Locale locale) {
+
+    ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes", locale);
     
+    cbGeneros.removeAllItems();
+
+    cbGeneros.addItem(bundle.getString("accion"));
+    cbGeneros.addItem(bundle.getString("terror"));
+    cbGeneros.addItem(bundle.getString("romance"));
+    cbGeneros.addItem(bundle.getString("comedia"));
+    cbGeneros.addItem(bundle.getString("ciencia"));
+    cbGeneros.addItem(bundle.getString("finanzas"));
+    cbGeneros.addItem(bundle.getString("otro"));
+    lblRegistrarL.setText(bundle.getString("registrar.libro.titulo"));
+    lblCodigo.setText(bundle.getString("registrar.libro.codigo"));
+    lblTitulo.setText(bundle.getString("registrar.libro.titulo.campo"));
+    lblGenero.setText(bundle.getString("registrar.libro.genero"));
+    lblEditorial.setText(bundle.getString("registrar.libro.editorial"));
+    lblAutor.setText(bundle.getString("registrar.libro.autor"));
+    lblFechaP.setText(bundle.getString("registrar.libro.fecha"));
+    lblFormato.setText(bundle.getString("registrar.libro.fecha.formato"));
+    btnAceptar.setText(bundle.getString("registrar.libro.btn.registrar"));
+    btnCancelar.setText(bundle.getString("registrar.libro.btn.cancelar"));
+   }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,20 +123,20 @@ public class RegistrarLibroView extends javax.swing.JInternalFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblRegistrarL = new javax.swing.JLabel();
+        lblCodigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         txtTitulo = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblGenero = new javax.swing.JLabel();
         txtEditorial = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblEditorial = new javax.swing.JLabel();
+        lblAutor = new javax.swing.JLabel();
         cbAutor = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
+        lblFechaP = new javax.swing.JLabel();
         txtFechaDePublicacion = new javax.swing.JTextField();
         cbGeneros = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
+        lblFormato = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -126,8 +151,8 @@ public class RegistrarLibroView extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        jLabel1.setText("Registrar libro");
+        lblRegistrarL.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        lblRegistrarL.setText("Registrar libro");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,42 +160,42 @@ public class RegistrarLibroView extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(230, 230, 230)
-                .addComponent(jLabel1)
+                .addComponent(lblRegistrarL)
                 .addContainerGap(232, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblRegistrarL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel2.setText("Codigo:");
+        lblCodigo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblCodigo.setText("Codigo:");
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel3.setText("Titulo:");
+        lblTitulo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblTitulo.setText("Titulo:");
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel4.setText("Genero:");
+        lblGenero.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblGenero.setText("Genero:");
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel5.setText("Editorial:");
+        lblEditorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblEditorial.setText("Editorial:");
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel6.setText("Autor:");
+        lblAutor.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblAutor.setText("Autor:");
 
         cbAutor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbAutor.addActionListener(this::cbAutorActionPerformed);
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel7.setText("Fecha de publicacion:");
+        lblFechaP.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblFechaP.setText("Fecha de publicacion:");
 
-        cbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Accion", "Terror", "Romanze", "Comedia", "Otro" }));
+        cbGeneros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Accion", "Terror", "Romance", "Comedia", "Ciencia", "Finanzas", "Otro" }));
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
-        jLabel8.setText("DD/MM/AA");
+        lblFormato.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        lblFormato.setText("DD/MM/AA");
 
         btnAceptar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         btnAceptar.setText("Registrar");
@@ -188,12 +213,12 @@ public class RegistrarLibroView extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(246, 246, 246)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblFormato, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -203,21 +228,21 @@ public class RegistrarLibroView extends javax.swing.JInternalFrame {
                         .addGap(56, 56, 56)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblFechaP, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtFechaDePublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(lblGenero)
                                 .addGap(18, 18, 18)
                                 .addComponent(cbGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
+                                    .addComponent(lblEditorial)
+                                    .addComponent(lblAutor))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,30 +260,30 @@ public class RegistrarLibroView extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblCodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblTitulo)
                     .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblGenero)
                     .addComponent(cbGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(lblEditorial))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblAutor)
                     .addComponent(cbAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(lblFechaP)
                     .addComponent(txtFechaDePublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
+                .addComponent(lblFormato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -301,17 +326,17 @@ public class RegistrarLibroView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cbAutor;
     private javax.swing.JComboBox<String> cbGeneros;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblAutor;
+    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblEditorial;
+    private javax.swing.JLabel lblFechaP;
+    private javax.swing.JLabel lblFormato;
+    private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblRegistrarL;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtEditorial;
     private javax.swing.JTextField txtFechaDePublicacion;

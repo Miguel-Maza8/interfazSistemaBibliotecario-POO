@@ -6,6 +6,8 @@ package ec.edu.ups.biblioteca.views;
 
 import ec.edu.ups.biblioteca.models.Autor;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
@@ -63,7 +65,31 @@ public class ListarAutorView extends javax.swing.JInternalFrame {
     public void setBtnListarAu(JButton btnListarAu) {
         this.btnListarAu = btnListarAu;
     }
-     
+    public void cambiarIdioma(Locale locale){
+
+    ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes", locale);
+            
+
+
+
+    btnListarAu.setText(bundle.getString("listar"));
+    btnCancelarA.setText(bundle.getString("cancelar"));
+
+    tblAutor.getColumnModel().getColumn(0)
+            .setHeaderValue(bundle.getString("cedula"));
+
+    tblAutor.getColumnModel().getColumn(1)
+            .setHeaderValue(bundle.getString("nombre"));
+
+    tblAutor.getColumnModel().getColumn(2)
+            .setHeaderValue(bundle.getString("apellido"));
+
+    tblAutor.getColumnModel().getColumn(3)
+            .setHeaderValue(bundle.getString("nacionalidad"));
+    
+
+    tblAutor.getTableHeader().repaint();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,6 +105,10 @@ public class ListarAutorView extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         btnListarAu = new javax.swing.JButton();
         btnCancelarA = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
 
         tblAutor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

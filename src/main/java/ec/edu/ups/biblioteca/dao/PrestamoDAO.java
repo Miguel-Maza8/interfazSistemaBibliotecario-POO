@@ -15,4 +15,5 @@ public interface PrestamoDAO {
     void crear(Prestamo prestamo);
     Prestamo buscar (int codigo);
     List<Prestamo> Listar();
+    Prestamo Eliminar(int codigo);
 }

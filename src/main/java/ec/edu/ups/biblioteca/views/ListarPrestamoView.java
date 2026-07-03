@@ -4,18 +4,97 @@
  */
 package ec.edu.ups.biblioteca.views;
 
+import ec.edu.ups.biblioteca.models.Prestamo;
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Miguel Maza
  */
 public class ListarPrestamoView extends javax.swing.JInternalFrame {
-
+     
+    private DefaultTableModel modelo;
     /**
      * Creates new form ListarPrestamoView
      */
     public ListarPrestamoView() {
         initComponents();
+        configurarTabla();
     }
+    public void configurarTabla(){
+        
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Usuario");
+        modelo.addColumn("Libro");
+        modelo.addColumn("Fecha de prestamo");
+        modelo.addColumn("fecha de devolucion");
+        
+        tblPrestamos.setModel(modelo);
+        
+    
+    }
+    public void cargarDatos(List<Prestamo> prestamos){
+        modelo.setRowCount(0);
+        
+        for( Prestamo prestamo : prestamos){
+            Object[] fila = {prestamo.getCodigo(),
+                prestamo.getUsuario().toString(),
+                prestamo.getLibro().toString(),
+                prestamo.getFechaDePrestamo(),
+                prestamo.getFechaDeDevolucion()
+            };
+            
+            modelo.addRow(fila);
+        }
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JButton getBtnListarP() {
+        return btnListarP;
+    }
+
+    public void setBtnListarP(JButton btnListarP) {
+        this.btnListarP = btnListarP;
+    }
+    public void cambiarIdioma(Locale locale){
+
+    ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes", locale);
+            
+
+
+
+    btnListarP.setText(bundle.getString("listar"));
+    btnCancelar.setText(bundle.getString("cancelar"));
+
+    tblPrestamos.getColumnModel().getColumn(0)
+            .setHeaderValue(bundle.getString("codigo"));
+
+    tblPrestamos.getColumnModel().getColumn(1)
+            .setHeaderValue(bundle.getString("usuario"));
+
+    tblPrestamos.getColumnModel().getColumn(2)
+            .setHeaderValue(bundle.getString("libro"));
+
+    tblPrestamos.getColumnModel().getColumn(3)
+            .setHeaderValue(bundle.getString("fechaPrestamo"));
+    tblPrestamos.getColumnModel().getColumn(4)
+            .setHeaderValue(bundle.getString("fechaDevolucion"));
+
+    tblPrestamos.getTableHeader().repaint();
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +105,97 @@ public class ListarPrestamoView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPrestamos = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        btnListarP = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
+        tblPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblPrestamos);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnListarP.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnListarP.setText("Listar");
+        btnListarP.addActionListener(this::btnListarPActionPerformed);
+
+        btnCancelar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnListarP, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(btnListarP)
+                .addGap(29, 29, 29)
+                .addComponent(btnCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnListarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarPActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+          dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnListarP;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblPrestamos;
     // End of variables declaration//GEN-END:variables
 }

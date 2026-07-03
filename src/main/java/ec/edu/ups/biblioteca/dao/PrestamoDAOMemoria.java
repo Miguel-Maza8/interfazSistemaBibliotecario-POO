@@ -41,5 +41,19 @@ public class PrestamoDAOMemoria implements PrestamoDAO{
     public List<Prestamo> Listar() {
        return lista;
     }
+
+    @Override
+    public Prestamo Eliminar(int codigo) {
+        Prestamo prestamoEncontrado = buscar(codigo);
+
+     if ( prestamoEncontrado != null){
+         
+         lista.remove(prestamoEncontrado);
+         return prestamoEncontrado;
+     }
+     return null;
+    }
+
+
     
 }

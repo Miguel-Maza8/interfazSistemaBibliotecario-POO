@@ -41,6 +41,7 @@ public class AutorController {
         configurarEventosEliminarAutorBuscar();
         configurarEventosActualizarAutor();
         configurarEventosListarLibro();
+        
     }
     
     public void registrarAutor(){
@@ -59,7 +60,7 @@ public class AutorController {
             registrarAutorView.getBtnRegistrarA().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hola");
+                
                 registrarAutor();
             }
         });
@@ -79,7 +80,7 @@ public class AutorController {
             buscarAutorView.getBtnBuscarA().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hola");
+                
                 buscarAutor();
             }
         });
@@ -107,7 +108,7 @@ public class AutorController {
             eliminarAutorView.getBtnEliminarA().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hola");
+                
                 eliminarAutor();
             }
         });
@@ -125,7 +126,7 @@ public class AutorController {
             eliminarAutorView.getBtnBuscarA().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hola");
+                
                 buscarAutorEliminar();
             }
         });
@@ -133,6 +134,9 @@ public class AutorController {
        
     public void actualizarAutor (){
         String cedula = actualizarAutorView.getTxtCedulaActA().getText();
+         Autor l = autorDAO.buscar(cedula);
+         if ( l != null){
+        
         String nombre = actualizarAutorView.getTxtNombreAct().getText();
         String nacionalidad=  actualizarAutorView.getTxtNacionalidadAct().getText();
         String apellido = actualizarAutorView.getTxtApellidoAc().getText();
@@ -140,12 +144,15 @@ public class AutorController {
         Autor autor = new Autor(cedula,nombre,apellido,nacionalidad);
         autorDAO.actualizar(autor);
         JOptionPane.showMessageDialog(null, "Autor actualizado correctamente ");
+         }else{
+            JOptionPane.showMessageDialog(null, "Autor no encontrado");
+         }
     }
     public void configurarEventosActualizarAutor(){
             actualizarAutorView.getBtnActualizar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hola");
+                
                 actualizarAutor();
             }
         });
@@ -167,5 +174,7 @@ public class AutorController {
          });
          
      } 
+    
+        
 }
 

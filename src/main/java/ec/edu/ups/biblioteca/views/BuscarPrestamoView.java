@@ -4,6 +4,13 @@
  */
 package ec.edu.ups.biblioteca.views;
 
+import ec.edu.ups.biblioteca.models.Prestamo;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Miguel Maza
@@ -17,6 +24,86 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JButton getBtnBuscarP() {
+        return btnBuscarP;
+    }
+
+    public void setBtnBuscarP(JButton btnBuscarP) {
+        this.btnBuscarP = btnBuscarP;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    public JTextField getTxtCodigoP() {
+        return txtCodigoP;
+    }
+
+    public void setTxtCodigoP(JTextField txtCodigoP) {
+        this.txtCodigoP = txtCodigoP;
+    }
+
+    public JTextField getTxtFechaBP() {
+        return txtFechaBP;
+    }
+
+    public void setTxtFechaBP(JTextField txtFechaBP) {
+        this.txtFechaBP = txtFechaBP;
+    }
+
+    public JTextField getTxtFechaDP() {
+        return txtFechaDP;
+    }
+
+    public void setTxtFechaDP(JTextField txtFechaDP) {
+        this.txtFechaDP = txtFechaDP;
+    }
+
+    public JTextField getTxtLibroP() {
+        return txtLibroP;
+    }
+
+    public void setTxtLibroP(JTextField txtLibroP) {
+        this.txtLibroP = txtLibroP;
+    }
+
+    public JTextField getTxtUsuarioP() {
+        return txtUsuarioP;
+    }
+
+    public void setTxtUsuarioP(JTextField txtUsuarioP) {
+        this.txtUsuarioP = txtUsuarioP;
+    }
+    
+    public void mostrarPrestamo(Prestamo prestamo) {
+    txtUsuarioP.setText(prestamo.getUsuario().toString());
+    txtLibroP.setText(prestamo.getLibro().toString());
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    txtFechaBP.setText(sdf.format(prestamo.getFechaDePrestamo()));
+    SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+    txtFechaDP.setText(sdf2.format(prestamo.getFechaDeDevolucion()));
+
+    }
+    public void cambiarIdioma(Locale locale) {
+    ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes", locale);
+
+    setTitle(bundle.getString("buscarPrestamoTitulo"));
+    lblTituloVentana.setText(bundle.getString("buscarPrestamoTitulo"));
+
+    lblCodigo.setText(bundle.getString("codigo"));
+    lblUsuario.setText(bundle.getString("usuario"));
+    lblLibro.setText(bundle.getString("libro"));
+    lblFechaPrestamo.setText(bundle.getString("fechaPrestamo"));
+    lblFechaDevolucion.setText(bundle.getString("fechaDevolucion"));
+
+    btnBuscarP.setText(bundle.getString("buscar"));         
+    btnCancelar.setText(bundle.getString("cancelar"));     
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +113,229 @@ public class BuscarPrestamoView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        lblTituloVentana = new javax.swing.JLabel();
+        lblCodigo = new javax.swing.JLabel();
+        txtCodigoP = new javax.swing.JTextField();
+        btnBuscarP = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        lblUsuario = new javax.swing.JLabel();
+        lblLibro = new javax.swing.JLabel();
+        lblFechaPrestamo = new javax.swing.JLabel();
+        lblFechaDevolucion = new javax.swing.JLabel();
+        txtUsuarioP = new javax.swing.JTextField();
+        txtLibroP = new javax.swing.JTextField();
+        txtFechaBP = new javax.swing.JTextField();
+        txtFechaDP = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        btnCancelar = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+
+        lblTituloVentana.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        lblTituloVentana.setText("Buscar Prestamo");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTituloVentana, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(258, 258, 258))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTituloVentana, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        lblCodigo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblCodigo.setText("Codigo:");
+
+        txtCodigoP.addActionListener(this::txtCodigoPActionPerformed);
+
+        btnBuscarP.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnBuscarP.setText("Buscar");
+
+        lblUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblUsuario.setText("Usuario:");
+
+        lblLibro.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblLibro.setText("Libro:");
+
+        lblFechaPrestamo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblFechaPrestamo.setText("Fecha de prestamo:");
+
+        lblFechaDevolucion.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        lblFechaDevolucion.setText("Fecha de devolucion:");
+
+        txtUsuarioP.addActionListener(this::txtUsuarioPActionPerformed);
+
+        txtLibroP.addActionListener(this::txtLibroPActionPerformed);
+
+        txtFechaBP.addActionListener(this::txtFechaBPActionPerformed);
+
+        txtFechaDP.addActionListener(this::txtFechaDPActionPerformed);
+
+        btnCancelar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addComponent(lblCodigo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCodigoP, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscarP, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(lblLibro)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtLibroP, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(lblUsuario)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtUsuarioP, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblFechaPrestamo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtFechaBP, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblFechaDevolucion)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtFechaDP, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 96, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addComponent(jSeparator2)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(279, 279, 279)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarP, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuarioP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLibroP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaBP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFechaDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtCodigoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoPActionPerformed
+
+    private void txtUsuarioPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioPActionPerformed
+
+    private void txtLibroPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLibroPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLibroPActionPerformed
+
+    private void txtFechaBPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaBPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaBPActionPerformed
+
+    private void txtFechaDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaDPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaDPActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+               dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarP;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblFechaDevolucion;
+    private javax.swing.JLabel lblFechaPrestamo;
+    private javax.swing.JLabel lblLibro;
+    private javax.swing.JLabel lblTituloVentana;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JTextField txtCodigoP;
+    private javax.swing.JTextField txtFechaBP;
+    private javax.swing.JTextField txtFechaDP;
+    private javax.swing.JTextField txtLibroP;
+    private javax.swing.JTextField txtUsuarioP;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,8 @@ package ec.edu.ups.biblioteca.views;
 
 import ec.edu.ups.biblioteca.models.Libro;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
@@ -69,6 +71,34 @@ public class ListarLibroView extends javax.swing.JInternalFrame {
         this.btnListarL = btnListarL;
     }
     
+    public void cambiarIdioma(Locale locale){
+
+    ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes", locale);
+            
+
+    setTitle(bundle.getString("listarLibroTitulo"));
+
+    btnListarL.setText(bundle.getString("listar"));
+    btnCancelarL.setText(bundle.getString("cancelar"));
+
+    tblLibros.getColumnModel().getColumn(0)
+            .setHeaderValue(bundle.getString("codigo"));
+
+    tblLibros.getColumnModel().getColumn(1)
+            .setHeaderValue(bundle.getString("titulo"));
+
+    tblLibros.getColumnModel().getColumn(2)
+            .setHeaderValue(bundle.getString("editorial"));
+
+    tblLibros.getColumnModel().getColumn(3)
+            .setHeaderValue(bundle.getString("fechaPublicacion"));
+    tblLibros.getColumnModel().getColumn(4)
+            .setHeaderValue(bundle.getString("genero"));
+    tblLibros.getColumnModel().getColumn(5)
+            .setHeaderValue(bundle.getString("autor"));
+
+    tblLibros.getTableHeader().repaint();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,6 +114,10 @@ public class ListarLibroView extends javax.swing.JInternalFrame {
         tblLibros = new javax.swing.JTable();
         btnCancelarL = new javax.swing.JButton();
         btnListarL = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 

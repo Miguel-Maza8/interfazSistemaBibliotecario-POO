@@ -6,6 +6,8 @@ package ec.edu.ups.biblioteca.views;
 
 import ec.edu.ups.biblioteca.models.Usuario;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
@@ -69,7 +71,36 @@ public class ListarUsuarioView extends javax.swing.JInternalFrame {
     public void setBtnListar(JButton btnListar) {
         this.btnListar = btnListar;
     }
-     
+     public void cambiarIdioma(Locale locale){
+
+    ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes", locale);
+            
+
+    setTitle(bundle.getString("listarLibroTitulo"));
+
+    btnListar.setText(bundle.getString("listar"));
+    btnCancelar.setText(bundle.getString("cancelar"));
+
+    tblUsuarios.getColumnModel().getColumn(0)
+            .setHeaderValue(bundle.getString("cedula"));
+
+    tblUsuarios.getColumnModel().getColumn(1)
+            .setHeaderValue(bundle.getString("nombre"));
+
+    tblUsuarios.getColumnModel().getColumn(2)
+            .setHeaderValue(bundle.getString("apellido"));
+
+    tblUsuarios.getColumnModel().getColumn(3)
+            .setHeaderValue(bundle.getString("correo"));
+    tblUsuarios.getColumnModel().getColumn(4)
+            .setHeaderValue(bundle.getString("ciudad"));
+    tblUsuarios.getColumnModel().getColumn(5)
+            .setHeaderValue(bundle.getString("parroquia"));
+    tblUsuarios.getColumnModel().getColumn(6)
+            .setHeaderValue(bundle.getString("codigoPostal"));
+
+    tblUsuarios.getTableHeader().repaint();
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,6 +115,10 @@ public class ListarUsuarioView extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         btnListar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
 
         tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

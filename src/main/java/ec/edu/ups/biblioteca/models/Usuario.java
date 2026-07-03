@@ -65,6 +65,11 @@ public class Usuario {
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
+
+    @Override
+    public String toString() {
+        return nombre +  " "+ apellido;
+    }
     
     
 }
