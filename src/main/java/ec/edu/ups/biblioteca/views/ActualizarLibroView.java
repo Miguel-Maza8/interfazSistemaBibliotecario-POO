@@ -48,7 +48,7 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
         this.cbAutorA = cbAutorA;
     }
 
-    public JComboBox<String> getCbGenerosA() {
+    public JComboBox getCbGenerosA() {
         return cbGenerosA;
     }
 
@@ -217,7 +217,6 @@ public class ActualizarLibroView extends javax.swing.JInternalFrame {
 
         cbGenerosA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Accion", "Terror", "Romance", "Comedia", "Ciencia", "Finanzas", "Otro" }));
 
-        cbAutorA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbAutorA.addActionListener(this::cbAutorAActionPerformed);
 
         jLabel1.setText("DD/MM/AA");

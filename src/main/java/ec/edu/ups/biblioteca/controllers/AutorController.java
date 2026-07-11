@@ -52,7 +52,7 @@ public class AutorController {
         
         Autor autor = new Autor(cedula,nombre,apellido,nacionalidad);
         autorDAO.crear(autor);
-        
+        JOptionPane.showMessageDialog(null, "Autor registrado");
     }
     
     
@@ -87,11 +87,7 @@ public class AutorController {
         }
     public void eliminarAutor(){
          String cedula = eliminarAutorView.getTxtCodigoEliminarA().getText();
-        // Libro p = libroDAO.buscar(codigo);
-        
-        //if (p != null){
-            
-           // eliminarLibroView.mostrarLibro(p);
+       
             
             int respuesta = JOptionPane.showConfirmDialog( null,"¿Deseas eliminar?\n" ,"Confirmar eliminación", JOptionPane.YES_NO_OPTION);
             

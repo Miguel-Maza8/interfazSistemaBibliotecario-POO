@@ -87,6 +87,13 @@ public class LibroController {
             registrarLibroView.getCbAutor().addItem(autor);
         }
     }
+    public void cargarAutoresA() {
+
+        actualizarLibroView.getCbAutorA().removeAllItems();
+        for (Autor autor : autorDAO.listar()) {
+           actualizarLibroView.getCbAutorA().addItem(autor);
+        }
+    }
     public void configurarEventosRegistrarLibro(){
             registrarLibroView.getBtnAceptar().addActionListener(new ActionListener() {
             @Override
@@ -186,9 +193,7 @@ public class LibroController {
 
          Libro libro = new Libro(codigo,titulo,genero ,editorial,autor,fechaPrestamo);                                 
          
-         libroDAO.crear(libro);
-         
-          
+         libroDAO.actualizar(libro);
          JOptionPane.showMessageDialog(null, "Libro actualizado");
          
        } catch (ParseException e) {
